@@ -24,6 +24,9 @@ const getUserAccountsController = async (req,res) => {
     try {
         const user = req.user;
         const accounts = await accountModel.find({user:user._id})
+        if(accounts.length === 0){
+            return res.status(404).json({message:`Open your first account ${user.name}!!`})
+        }   
         return res.status(200).json({accounts})
     } catch (error) {
         console.log(error);
