@@ -16,6 +16,13 @@ const accountRouter = require("./routes/account.routes")
 const transactionRoutes = require("./routes/transaction.routes")
 
 /**
+ * - Base Route
+ */
+app.get("/",(req,res)=>{
+  res.send("Welcome to LedgerFlow API")
+})
+
+/**
  * - Use Route
  */
 
