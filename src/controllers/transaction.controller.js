@@ -16,7 +16,10 @@ const createTransaction = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
+    
     const existingTransaction = await transactionModel.findOne({ idempotencyKey });
+
+    
 
     if (existingTransaction) {
       return res.status(200).json(existingTransaction);
@@ -189,6 +192,7 @@ const createIntialFundsTransaction = async (req, res) => {
     await session.abortTransaction();
     session.endSession();
     console.log(error);
+    
 
     res.status(500).json({
       message: "Initial funds transaction failed",
@@ -200,3 +204,5 @@ module.exports = {
   createTransaction,
   createIntialFundsTransaction,
 };
+
+
