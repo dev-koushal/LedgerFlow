@@ -1,6 +1,6 @@
 const userModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-const TokenBlacklist = require("../models/blackList.model");
+const tokenBlacklistModel = require("../models/blacklist.model");
 
 const authMiddleware = async (req, res, next) => {
   try {
@@ -13,7 +13,7 @@ const authMiddleware = async (req, res, next) => {
     }
     // console.log(token);
 
-    const isBlacklisted = await TokenBlacklist.findOne({ token });
+    const isBlacklisted = await tokenBlacklistModel.findOne({ token });
 
     if (isBlacklisted) {
       return res

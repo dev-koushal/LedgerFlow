@@ -1,6 +1,6 @@
 const userModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-const tokenBlacklistModel = require("../models/blackList.model");
+const tokenBlacklistModel = require("../models/blacklist.model");
 /**
  * - user register controller
  * - POST /api/auth/register
