@@ -51,7 +51,7 @@ const authSystemUserMiddleware = async (req, res, next) => {
         .json({ message: "Unauthorized access, token is missing" });
     }
 
-    const isBlacklisted = await TokenBlacklist.findOne({ token });
+    const isBlacklisted = await tokenBlacklistModel.findOne({ token });
 
     if (isBlacklisted) {  
       return res
